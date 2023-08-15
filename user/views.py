@@ -8,7 +8,7 @@ def register(request):
         form = CreateUserForm(request.POST) #the user detail
         if form.is_valid(): #check for the form validation
             form.save()
-            return redirect('dashboard-index')
+            return redirect('user-login')
     else:
         form = CreateUserForm()
         
