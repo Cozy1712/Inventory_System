@@ -3,110 +3,114 @@
 
 {% block content %}
 
+    {% if user.is_authenticated and user.is_staff and user.is_superuser%}
     {% include 'partials/topnav.html' %}
 
-    <!-- Graphs -->
-    <div class="container">
-        <div class="row my-5">
-            <div class="col-md-6 my-2">
-                <div class="bg-white">
-                    <canvas id="myChart1" width="400" height="300"></canvas>
-                    <script>
-                        const ctx1 = document.getElementById('myChart1').getContext('2d');
-                    
-                        new Chart(ctx1, {
-                        type: 'pie',
-                        data: {
-                                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                                datasets: [{
-                                    label: 'products',
-                                    data: [12, 19, 3, 5, 2, 3],
-                                    backgroundColor: [
-                                        'rgba(255, 99, 132, 1)',
-                                        'rgba(54, 162, 235, 1)',
-                                        'rgba(255, 205, 86, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(153, 102, 255, 1)',
-                                        'rgba(255, 159, 64, 1)',
-                                        'rgba(201, 203, 207, 1)'
-                                        
-                                        
-                                    ],
-                                    borderColor: [
-                                        'rgb(255, 99, 132)',
-                                        'rgb(54, 162, 235)',
-                                        'rgb(255, 205, 86)',
-                                        'rgb(75, 192, 192)',
-                                        'rgb(153, 102, 255)',
-                                        'rgb(255, 159, 64)',
-                                        'rgb(201, 203, 207)'
-                                        
-                                        
-                                    ],
-                                    borderWidth: 1
-                                }]
-                        },
-                        options: {
-                            scales: {
-                            y: {
-                                beginAtZero: true
+        <!-- Graphs -->
+        <div class="container">
+            <div class="row my-5">
+                <div class="col-md-6 my-2">
+                    <div class="bg-white">
+                        <canvas id="myChart1" width="400" height="300"></canvas>
+                        <script>
+                            const ctx1 = document.getElementById('myChart1').getContext('2d');
+                        
+                            new Chart(ctx1, {
+                            type: 'pie',
+                            data: {
+                                    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                                    datasets: [{
+                                        label: 'products',
+                                        data: [12, 19, 3, 5, 2, 3],
+                                        backgroundColor: [
+                                            'rgba(255, 99, 132, 1)',
+                                            'rgba(54, 162, 235, 1)',
+                                            'rgba(255, 205, 86, 1)',
+                                            'rgba(75, 192, 192, 1)',
+                                            'rgba(153, 102, 255, 1)',
+                                            'rgba(255, 159, 64, 1)',
+                                            'rgba(201, 203, 207, 1)'
+                                            
+                                            
+                                        ],
+                                        borderColor: [
+                                            'rgb(255, 99, 132)',
+                                            'rgb(54, 162, 235)',
+                                            'rgb(255, 205, 86)',
+                                            'rgb(75, 192, 192)',
+                                            'rgb(153, 102, 255)',
+                                            'rgb(255, 159, 64)',
+                                            'rgb(201, 203, 207)'
+                                            
+                                            
+                                        ],
+                                        borderWidth: 1
+                                    }]
+                            },
+                            options: {
+                                scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                                }
                             }
-                            }
-                        }
-                        });
-                    </script>
+                            });
+                        </script>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-6 my-2">
-                <div class="bg-white">
-                    <canvas id="myChart" width="400" height="300"></canvas>
-                    <script>
-                        const ctx = document.getElementById('myChart').getContext('2d');
-                    
-                        new Chart(ctx, {
-                        type: 'bar',
-                        data: {
-                                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                                datasets: [{
-                                    label: 'products',
-                                    data: [12, 19, 3, 5, 2, 3],
-                                    backgroundColor: [
-                                        'rgba(255, 99, 132, 1)',
-                                        'rgba(54, 162, 235, 1)',
-                                        'rgba(255, 205, 86, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(153, 102, 255, 1)',
-                                        'rgba(255, 159, 64, 1)',
-                                        'rgba(201, 203, 207, 1)'
-                                        
-                                        
-                                    ],
-                                    borderColor: [
-                                        'rgb(255, 99, 132)',
-                                        'rgb(54, 162, 235)',
-                                        'rgb(255, 205, 86)',
-                                        'rgb(75, 192, 192)',
-                                        'rgb(153, 102, 255)',
-                                        'rgb(255, 159, 64)',
-                                        'rgb(201, 203, 207)'
-                                        
-                                        
-                                    ],
-                                    borderWidth: 1
-                                }]
-                        },
-                        options: {
-                            scales: {
-                            y: {
-                                beginAtZero: true
+                <div class="col-md-6 my-2">
+                    <div class="bg-white">
+                        <canvas id="myChart" width="400" height="300"></canvas>
+                        <script>
+                            const ctx = document.getElementById('myChart').getContext('2d');
+                        
+                            new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                                    datasets: [{
+                                        label: 'products',
+                                        data: [12, 19, 3, 5, 2, 3],
+                                        backgroundColor: [
+                                            'rgba(255, 99, 132, 1)',
+                                            'rgba(54, 162, 235, 1)',
+                                            'rgba(255, 205, 86, 1)',
+                                            'rgba(75, 192, 192, 1)',
+                                            'rgba(153, 102, 255, 1)',
+                                            'rgba(255, 159, 64, 1)',
+                                            'rgba(201, 203, 207, 1)'
+                                            
+                                            
+                                        ],
+                                        borderColor: [
+                                            'rgb(255, 99, 132)',
+                                            'rgb(54, 162, 235)',
+                                            'rgb(255, 205, 86)',
+                                            'rgb(75, 192, 192)',
+                                            'rgb(153, 102, 255)',
+                                            'rgb(255, 159, 64)',
+                                            'rgb(201, 203, 207)'
+                                            
+                                            
+                                        ],
+                                        borderWidth: 1
+                                    }]
+                            },
+                            options: {
+                                scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                                }
                             }
-                            }
-                        }
-                        });
-                    </script>
+                            });
+                        </script>
+                    </div>
                 </div>
-            </div>
-        </div>   
-    </div>
-    <!-- End Graphs -->
+            </div>   
+        </div>
+        <!-- End Graphs -->
+    {%else%} 
+    {% include 'dashboard/staff_index.html'%}
+    {%endif%}
 {% endblock %}
