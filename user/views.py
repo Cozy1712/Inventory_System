@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .form import CreateUserForm
 
 # Create your views here.
+# creating registraion for user using FBV
 def register(request):
     if request.method == 'POST':
         form = CreateUserForm(request.POST) #the user detail
@@ -17,3 +18,6 @@ def register(request):
     }
     return render(request, 'user/register.html', context)
  
+# creating profile page
+def profile(request):
+    return render(request, 'user/profile.html')
