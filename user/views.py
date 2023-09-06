@@ -22,6 +22,7 @@ def register(request):
 def profile(request):
     return render(request, 'user/profile.html')
 
+# updating profile
 def profile_update(request):
     if request.method=="POST":
         user_form =UserUpdateForm(request.POST, instance=request.user)

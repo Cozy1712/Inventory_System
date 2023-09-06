@@ -1,0 +1,27 @@
+{% extends 'partials/base.html' %}  <!---template inheritance-->
+{% block title %} Product Page {% endblock %}
+{% load crispy_forms_tags %}
+
+
+
+<!---content in Product-->
+{% block content %}
+  <!-- Product -->
+  <div class="container">
+    <div class="row my-4">
+      <div class="col-md-4 offset-md-3">
+        <div class="border bg-white p-3">
+          <h4>Edit Item</h4>
+          <hr>
+          <form  method="POST">
+            {% csrf_token %}
+            {{form|crispy}} 
+            <input class="btn btn-success btn-block" type="submit" value="update">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Product --> 
+
+{% endblock %}
