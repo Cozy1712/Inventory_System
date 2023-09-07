@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from .form import CreateUserForm, UserUpdateForm, ProfileUpdateForm
-
+from django.contrib import messages
 # Create your views here.
 # creating registraion for user using FBV
 def register(request):
@@ -9,6 +9,8 @@ def register(request):
         form = CreateUserForm(request.POST) #the user detail
         if form.is_valid(): #check for the form validation
             form.save()
+            username = form.cleaned_data.get('firstname')
+            messages.success = (request, f' Account has been created for {username}, you can now login')
             return redirect('user-login')
     else:
         form = CreateUserForm()
