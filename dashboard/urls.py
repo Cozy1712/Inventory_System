@@ -1,6 +1,5 @@
 from django.urls import path 
 from . import views
-from .views import profile
 
 urlpatterns = [
     path('dashboard/', views.index, name='dashboard-index'),

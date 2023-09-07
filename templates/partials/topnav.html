@@ -24,7 +24,7 @@
                             <a href="{% url 'dashboard-staff' %}" class="text-decoration-none text-dark">
                                 <div class="card my-card shadow text-center p-3">
                                     <h4>staff <i class="fa fa-users"></i></h4>
-                                    <h3>4</h3>
+                                    <h3>{{count_staff}}</h3>
                                 </div>
                             </a>
                         </div>
@@ -32,7 +32,7 @@
                             <a href="{% url 'dashboard-product' %}" class="text-decoration-none text-dark">
                                 <div class="card my-card shadow text-center p-3">
                                     <h4>Product <i class="fa fa-box"></i></h4>
-                                    <h3>4</h3>
+                                    <h3>{{count_product}}</h3>
                                 </div>
                             </a>
                         </div>
@@ -40,7 +40,7 @@
                             <a href="{% url 'dashboard-order' %}" class="text-decoration-none text-dark">
                                 <div class="card my-card shadow text-center p-3">
                                     <h4>orders <i class="fa fa-shipping-fast"></i></h4>
-                                    <h3>4</h3>
+                                    <h3>{{count_order}}</h3>
                                 </div>
                             </a>
                         </div>

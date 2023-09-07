@@ -18,10 +18,10 @@
                             new Chart(ctx1, {
                             type: 'pie',
                             data: {
-                                    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                                    labels: [{%for order in orders %} '{{order.product.name}}', {% endfor %}],
                                     datasets: [{
-                                        label: 'products',
-                                        data: [12, 19, 3, 5, 2, 3],
+                                        label: 'Orders',
+                                        data: [{% for order in orders%} '{{order.order_quantity}}', {% endfor %}],
                                         backgroundColor: [
                                             'rgba(255, 99, 132, 1)',
                                             'rgba(54, 162, 235, 1)',
@@ -67,10 +67,10 @@
                             new Chart(ctx, {
                             type: 'bar',
                             data: {
-                                    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                                    labels: [{% for product in products %} '{{product.name}}', {% endfor %}],
                                     datasets: [{
                                         label: 'products',
-                                        data: [12, 19, 3, 5, 2, 3],
+                                        data: [{% for product in products%} '{{product.quantity}}', {% endfor %}],
                                         backgroundColor: [
                                             'rgba(255, 99, 132, 1)',
                                             'rgba(54, 162, 235, 1)',

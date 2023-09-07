@@ -9,6 +9,8 @@ from django.contrib import messages
 @login_required
 def index(request):
     orders=Order.objects.all()
+    products=Product.objects.all()
+    staffs=User.objects.all()
     if request.method == "POST":
         form = OrderForm(request.POST)
         if form.is_valid():
@@ -18,9 +20,16 @@ def index(request):
             return redirect('dashboard-index')
     else:
         form = OrderForm()
+    count_order=orders.count()
+    count_product=products.count()
+    count_staff=staffs.count()
     context={
         'orders':orders,
         'form':form,
+        'products':products,
+        'count_order':count_order,
+        'count_product':count_product,
+        'count_staff':count_staff,
     }
     return render(request, 'dashboard/index.html', context)
 
@@ -28,8 +37,15 @@ def index(request):
 @login_required
 def staff(request):
     workers = User.objects.all()
+    count_staff=workers.count()
+    count_order=Order.objects.all().count()
+    count_product=Product.objects.all().count()
     context={
         'workers': workers,
+        'count_product': count_product,
+        'count_staff': count_staff,
+        'count_order': count_order,
+
     }
     return render(request, 'dashboard/staff.html', context)
 
@@ -37,8 +53,15 @@ def staff(request):
 @login_required
 def staff_detail(request, pk):
     workers = User.objects.get(id=pk)
+    count_product=Product.objects.all().count()
+    count_staff=workers.count()
+    count_order=Order.objects.all().count()
     context={
         'workers':workers,   
+        'count_product':count_product, 
+        'count_staff': count_staff,
+        'count_order': count_order,
+  
     }
     return render(request, 'dashboard/staff_detail.html', context)
 
@@ -46,7 +69,6 @@ def staff_detail(request, pk):
 def product(request):
     items = Product.objects.all() # Using object relational mapping(ORM) 
     # items = Product.objects.raw('SELECT * FROM dashboard_product') #USING Normalsql statement
-    
     if request.method=='POST':
        form = ProductForm(request.POST)
        if form.is_valid():
@@ -56,10 +78,16 @@ def product(request):
            return redirect('dashboard-product')
     else:
        form = ProductForm()
-       
+    count_product=items.count()  
+    count_staff=User.objects.all().count()
+    count_order=Order.objects.all().count()
     context ={
         'items': items,
         'form': form,
+        'count_product': count_product,
+        'count_staff': count_staff,
+        'count_order': count_order,
+        
     }
     return render(request, 'dashboard/product.html', context)
 
@@ -93,10 +121,14 @@ def product_delete(request, pk):
 @login_required
 def order(request):
     orders=Order.objects.all()
-    cart =Product.objects.all()
+    count_product=Product.objects.all().count()
+    count_staff=User.objects.all().count()
+    count_order=orders.count
     context={
         'orders':orders,
-        'cart': cart,
+        'count_order':count_order,
+        'count_staff':count_staff,
+        'count_product': count_product,
         
     }
     return render(request, 'dashboard/order.html', context)
