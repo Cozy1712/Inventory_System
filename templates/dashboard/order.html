@@ -25,7 +25,7 @@
             <tbody>
               {% for orders in orders %}
               <tr>
-                <td>{{orders.product}}</td>
+                <td>{{orders.product.name}}</td>
                 <td>{{orders.product.category}}</td>
                 <td>{{orders.order_quantity}}</td>
                 <td>{{orders.staff.username}}</td>
